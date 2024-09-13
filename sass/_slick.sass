@@ -22,16 +22,24 @@
     overflow: hidden
     margin: 0 5px
     img
+        transition: all ease .3s
         padding: 0 10px 10px
+        transform: translateY(30px)
+        opacity: 1 !important
+
     h3
         text-transform: uppercase
         font-size: 16px
         margin: 3px 0 4px
-        display: none
+        opacity: 0
     p
         font-size: 12px
         font-weight: 500
-        display: none
+        opacity: 0
+        margin: 0
+
+    * 
+        animation: fadeDown .3s ease forwards
 
 .slick-arrow
     position: absolute
@@ -98,8 +106,14 @@
 
 @keyframes fadeIn
     0%
-        transform: translateY(50px)
-        opacity: 0
+        transform: translateY(30px)
     100%
         opacity: 1
         transform: translateY(0px)
+
+@keyframes fadeDown
+    0%
+        transform: translateY(0px)
+    100%
+        opacity: 0
+        transform: translateY(30px)
