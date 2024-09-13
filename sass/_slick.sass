@@ -1,0 +1,105 @@
+
+.slider
+    position: relative
+    z-index: 200
+    padding: 0 0px
+    width: 100vw
+    left: -16px
+
+.slick
+    &-track,
+    &-list
+        display: flex
+        align-items: stretch
+
+.item
+    display: flex !important
+    padding: 10px 10px 20px
+    border: 2px solid #000
+    border-radius: 20px
+    width: 200px
+    background-color: #D2EDF8
+    overflow: hidden
+    margin: 0 5px
+    img
+        padding: 0 10px 10px
+    h3
+        text-transform: uppercase
+        font-size: 16px
+        margin: 3px 0 4px
+        display: none
+    p
+        font-size: 12px
+        font-weight: 500
+        display: none
+
+.slick-arrow
+    position: absolute
+    top: 50%
+    width: 30px
+    height: 30px
+    line-height: 50px
+    border: none
+    background-color: transparent
+    color: #fff
+    font-family: monospace
+    font-size: 5rem
+    transform: translateY(-50%)
+    z-index: 300
+    outline: none
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: contain
+    background-image: url('../img/arrow.svg')
+    &:hover,
+    &:active
+        opacity: 1
+        filter: invert(1)
+
+.slick-prev
+    left: 10px
+    text-align: left
+
+.slick-next
+    right: 10px
+    text-align: right
+    transform: scaleX(-1) translateY(-50%) !important
+
+// .item.slick-slide
+//     transition: transform .3s
+//     position: relative
+
+// .item.slick-slide.slick-center + .slick-slide
+//     transform: scale(0.8) translate(-130px)
+//     z-index: 10
+
+// .item.slick-slide.slick-active
+
+// .item.slick-slide.slick-current.slick-active.slick-center
+
+// .slider .slick-slide,
+// .slider .slick-slide[aria-hidden="true"]:not(.slick-cloned) ~ .slick-cloned[aria-hidden="true"]
+//     transform: scale(0.8) translate(130px)
+
+.slider .slick-center,
+.slider .slick-slide[aria-hidden="true"]:not([tabindex="-1"]) + .slick-cloned[aria-hidden="true"]
+    // transform: scale(1)
+    z-index: 30
+    *
+        animation: fadeIn .4s ease forwards
+        display: block
+    h3
+        opacity: 0
+        animation-delay: .1s
+
+    p
+        opacity: 0
+        animation-delay: .2s
+
+@keyframes fadeIn
+    0%
+        transform: translateY(50px)
+        opacity: 0
+    100%
+        opacity: 1
+        transform: translateY(0px)
