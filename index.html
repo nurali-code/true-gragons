@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Dragon</title>
+    <meta name="theme-color" content="#762aa5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sigmar+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="stylesheet" href="./css/aos.css"> -->
+
+</head>
+
+<body>
+    <header class="header fx-ac fx-jb">
+        <img src="img/logo.svg" alt="i">
+        <div class="soc fx-ac">
+            <a href="#" target="_blank" class="soc__link"><img src="img/twitter.svg" alt="i"></a>
+            <a href="#" target="_blank" class="soc__link"><img src="img/telegram.svg" alt="i"></a>
+            <button class="menu__btn" id="menu__btn"><span></span></button>
+        </div>
+    </header>
+
+    <main class="main">
+        <h1 class="h1">
+            Feels Like <br>
+            Falling <br>
+            behind?
+        </h1>
+
+        <video controlsList="nofullscreen" id="scene_01" muted loop poster="img/poster-1.jpg" class="vid"
+            src="vid/Scene_01.mp4"></video>
+    </main>
+
+    <section>
+        <h2 class="h1"> Get <mark>$</mark>True! </h2>
+        <p class="text text-center">While others heal your addictions True Dragons heals your fear to be yourself...</p>
+
+        <video controlsList="nofullscreen" id="scene_02" muted loop poster="img/poster-2.jpg" class="vid"
+            src="vid/scene_02.mp4" loading="lazy"></video>
+    </section>
+
+    <section>
+        <h2 class="h1"> the <mark>way</mark> <br> we go </h2>
+        <ol class="fx-col fx-as">
+            <li class="fx-ac"><span>Discover your true self</span></li>
+            <li class="fx-ac"><span>Get money just for who you are</span></li>
+            <li class="fx-ac"><span>That’s it...</span></li>
+        </ol>
+
+        <img src="img/dask.jpg" alt="i" loading="lazy" class="img">
+
+    </section>
+
+    <section>
+        <h2 class="h1"> Don’t panic! You’re here with <mark>friends</mark> </h2>
+        <p class="text">
+            Complete memetic psychological test with your friends, but not for yourself - for each other. Do
+            it with 5 people who know you well and get one resulting humorous yet insightful portrait and description of
+            your personality, as it's seen through the eyes of others.
+        </p>
+
+        <video controlsList="nofullscreen" id="scene_03" muted loop poster="img/poster-3.jpg" class="vid"
+            src="vid/scene_03.mp4" loading="lazy"></video>
+    </section>
+
+    <section>
+        <h2 class="h1">
+            Your <br>
+            friend’s <br>
+            <mark>totem</mark> <br>
+            <mark>animal</mark> is
+        </h2>
+
+        <img src="img/slider.jpg" alt="i" loading="lazy" class="img slider">
+    </section>
+
+    <section>
+        <h2 class="h1"> How <mark>Rare</mark> <br> are you? </h2>
+        <p class="text">
+            On a Big Drop Day on New Year's Eve, the rarity of attributes of all memetic portraits will be revealed and
+            every participant will get their piece of $TRUES proportional to the rarity of their portrait!
+        </p>
+
+        <video controlsList="nofullscreen" id="scene_05" muted loop poster="img/poster-4.jpg" class="vid"
+            src="vid/Scene_05.mp4" loading="lazy"></video>
+    </section>
+
+    <section>
+        <h2 class="h1"> Always be <mark>truesfull</mark> </h2>
+        <p class="text">
+            The Founders' token, made to be kept - holders are entitled to receive a portion of the monthly emission of
+            rewards tokens
+        </p>
+
+        <video controlsList="nofullscreen" id="scene_06" muted loop poster="img/poster-5.jpg" class="vid"
+            src="vid/scene_06.mp4" loading="lazy"></video>
+    </section>
+
+    <section>
+        <h2 class="h1">
+            <mark>Ambassadors’ club</mark>
+            all $Trues are in your hands
+        </h2>
+        <p class="text text-center">
+            System of permanent media partners who get returns from every purchase made by users in the project
+        </p>
+
+        <video controlsList="nofullscreen" id="vid1" muted loop poster="img/poster-6.jpg" class="vid"
+            src="vid/scene_07.mp4" loading="lazy"></video>
+    </section>
+
+    <!-- <script src="js/aos.js"></script> -->
+
+    <script>
+        // AOS.init({ duration: 1200, offset: 100, });
+        const btnMenu = document.querySelector('#menu__btn');
+        btnMenu.onclick = function() {
+            this.classList.toggle('active')
+        }
+
+
+        const videos = document.querySelectorAll('video');
+        const options = { root: null, rootMargin: '0px', threshold: 0.4 };
+        const observer = new IntersectionObserver(handleIntersection, options);
+
+        videos.forEach(video => observer.observe(video));
+
+        function handleIntersection(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.play();
+                } else {
+                    entry.target.pause();
+                }
+            });
+        }
+
+
+
+
+
+        // function copyText() {
+        //     var button = document.querySelector('.btn');
+        //     var dataToCopy = button.getAttribute('data-copy');
+        //     navigator.clipboard.writeText(dataToCopy)
+        //         .then(function () { alert('Text copied: ' + dataToCopy); })
+        //         .catch(function (err) { console.error('Failed to copy text:', err); });
+        // }
+    </script>
+
+
+</body>
+
+</html>

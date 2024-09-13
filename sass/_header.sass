@@ -1,0 +1,55 @@
+.header
+    width: 100%
+    padding: 10px 0
+    max-width: 516px
+    margin: 0 auto 48px
+    .soc
+        gap: 16px
+
+.menu
+    &__btn
+        z-index: 9999
+        display: inline-block
+        position: relative
+        width: 30px
+        height: 30px
+        margin: 0
+        &:hover
+            opacity: 1
+        span
+            position: absolute
+            top: 50%
+            left: 20%
+            margin-top: -1.5px
+            display: block
+            width: 69%
+            height: 2.5px
+            transition: all ease .3s
+            border-radius: 2px
+            background-color: #000
+            &::before,
+            &::after
+                content: ''
+                display: block
+                width: 100%
+                height: 2.5px
+                background-color: #000
+                position: absolute
+                top: 7px
+                right: 0
+                transition: all ease .3s
+                border-radius: 2px
+
+            &::after
+                top: -7px
+                left: 0
+
+        &.active
+            span
+                transform: rotate(-45deg)
+                &::before
+                    background-color: transparent
+
+                &::after
+                    top: 50%
+                    transform: rotate(-90deg)
