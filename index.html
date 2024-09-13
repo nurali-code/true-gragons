@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>True Dragon</title>
-    <meta name="theme-color" content="#762aa5" />
+    <title>True Dragons</title>
+    <meta name="theme-color" content="#d2edf8" />
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -34,7 +35,7 @@
         </h1>
 
         <video controlsList="nofullscreen" id="scene_01" muted loop poster="img/poster-1.jpg" class="vid"
-            src="vid/Scene_01.mp4"></video>
+            src="vid/scene_01.mp4"></video>
     </main>
 
     <section>
@@ -88,7 +89,7 @@
         </p>
 
         <video controlsList="nofullscreen" id="scene_05" muted loop poster="img/poster-4.jpg" class="vid"
-            src="vid/Scene_05.mp4" loading="lazy"></video>
+            src="vid/scene_05.mp4" loading="lazy"></video>
     </section>
 
     <section>
@@ -120,30 +121,18 @@
     <script>
         // AOS.init({ duration: 1200, offset: 100, });
         const btnMenu = document.querySelector('#menu__btn');
-        btnMenu.onclick = function() {
-            this.classList.toggle('active')
-        }
-
+        btnMenu.onclick = function () { this.classList.toggle('active') }
 
         const videos = document.querySelectorAll('video');
         const options = { root: null, rootMargin: '0px', threshold: 0.4 };
         const observer = new IntersectionObserver(handleIntersection, options);
-
         videos.forEach(video => observer.observe(video));
-
         function handleIntersection(entries) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.play();
-                } else {
-                    entry.target.pause();
-                }
+                if (entry.isIntersecting) { entry.target.play(); }
+                else { entry.target.pause(); }
             });
         }
-
-
-
-
 
         // function copyText() {
         //     var button = document.querySelector('.btn');
