@@ -3,10 +3,40 @@
     padding: 10px 0
     max-width: 516px
     margin: 0 auto 48px
+    position: relative
+    z-index: 999
     .soc
         gap: 16px
 
 .menu
+    display: block
+    position: fixed
+    top: 0
+    right: 0
+    background-color: #fff
+    width: 100%
+    max-width: 60%
+    height: 100vh
+    padding: 80px 20px 20px
+    border-radius: 20px 0 0 20px
+    box-shadow: -4px 4px 0 0 #000
+    transition: all ease .5s
+    transform: translateX(110%)
+
+    a
+        font-family: "Sigmar One", system-ui
+        color: #000
+        font-size: 22px
+        font-weight: 500
+        display: block
+        padding: 5px
+        // border-bottom: 1px solid rgba(0, 0, 0, .1)
+        &::first-letter
+            text-transform: uppercase
+
+    &.active
+        transform: translateX(0)
+
     &__btn
         z-index: 9999
         display: inline-block

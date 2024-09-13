@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sigmar+One&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="css/slick.min.css" />
     <link rel="stylesheet" href="./css/style.css">
 
     <!-- <link rel="stylesheet" href="./css/aos.css"> -->
@@ -27,6 +27,12 @@
             <a href="#" target="_blank" class="soc__link"><img src="img/telegram.svg" alt="i"></a>
             <button class="menu__btn" id="menu__btn"><span></span></button>
         </div>
+        <nav class="menu">
+            <a href="#">about</a>
+            <a href="#">real</a>
+            <a href="#">moree</a>
+            <a href="#">awesome</a>
+        </nav>
     </header>
 
     <main class="main">
@@ -162,8 +168,8 @@
 
     <!-- <script src="js/aos.js"></script> -->
 
-    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="js/jquery-2.2.4.js"></script>
+    <script src="js/slick.min.js"></script>
 
 
     <script>
@@ -186,8 +192,9 @@
 
 
         // AOS.init({ duration: 1200, offset: 100, });
-        const btnMenu = document.querySelector('#menu__btn');
-        btnMenu.onclick = function () { this.classList.toggle('active') }
+        $('.menu__btn').on('click', function(){
+            $('.menu__btn, .menu, body').toggleClass('active')
+        })
 
         const videos = document.querySelectorAll('video');
         const options = { root: null, rootMargin: '0px', threshold: 0.4 };
