@@ -1,56 +1,45 @@
-// Выбираем все видео на странице с помощью jQuery
-const videos = $(".vid");
-
-// Функция для активации видео на iOS
-function once(el, event, fn, opts) {
-    var onceFn = function (e) {
-        el.removeEventListener(event, onceFn);
-        fn.apply(this, arguments);
-    };
-    el.addEventListener(event, onceFn, opts);
-    return onceFn;
-}
-
-// Активация видео на iOS (одноразово)
-once(document.documentElement, "touchstart", function (e) {
-    videos.each(function () {
-        this.play();
-        this.pause();
-    });
-});
-
 // Регистрация плагина GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-// Применяем GSAP таймлайны и ScrollTrigger для каждого видео
-videos.each(function (index, video) {
-    if (video.tagName.toLowerCase() === 'video') { // Проверяем, что это видео элемент
-        let src = video.currentSrc || video.src;
-        console.log(`Video ${index + 1}:`, video, src);
+// Функция для создания таймлайна для одного видео
+function createVideoTimeline($video, startTrigger, endTrigger) {
+    // jQuery объект преобразуем в DOM-элемент
+    let video = $video.get(0);
 
-        let tl = gsap.timeline({
-            defaults: { duration: 1 },
-            scrollTrigger: {
-                trigger: video, // используем текущее видео как триггер
-                start: "0% 60%",
-                end: "100% 50%",
-                // markers: true,
-                scrub: true
-            },
-        });
+    // Активация видео на iOS (одноразово)
+    $(document).one("touchstart", function () { video.play(); video.pause(); });
 
-        // Начинаем анимацию, когда метаданные загружены
-        once(video, "loadedmetadata", () => {
-            tl.fromTo(
-                video,
-                { currentTime: 0 },
-                { currentTime: video.duration || 1 }
-            );
-        });
-    } else {
-        console.error(`Element at index ${index} is not a video.`, video);
-    }
-});
+    // Создаем GSAP таймлайн для видео
+    let tl = gsap.timeline({
+        defaults: { duration: 1 },
+        scrollTrigger: {
+            trigger: video,      // используем текущее видео как триггер
+            start: startTrigger, // параметры начала
+            end: endTrigger,     // параметры окончания
+            // markers: true,       // маркеры для отладки
+            scrub: true          // плавный скролл
+        },
+    });
+
+    // Начинаем анимацию, когда метаданные видео загружены
+    $video.one("loadedmetadata", function () {
+        tl.fromTo(
+            video,
+            { currentTime: 0 },              // Начальная точка анимации
+            { currentTime: video.duration || 1 } // Финальная точка анимации
+        );
+    });
+
+    return tl; // Возвращаем таймлайн для дальнейшего использования, если нужно
+}
+
+// Пример использования функции с несколькими видео
+
+// Видео 1
+createVideoTimeline($("#video1"), "0% 10%", "100% 100%");
+
+// Видео 2
+createVideoTimeline($("#video2"), "20% 60%", "90% 80%");
 
 $('.slider').slick({
     slidesToShow: 3,
