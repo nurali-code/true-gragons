@@ -86,10 +86,10 @@
             <mark>animal</mark> is
         </h2>
 
-        <!-- <img src="img/slider.jpg" alt="i" loading="lazy" class="img slider"> -->
         <div class="slider fx">
             <div class="item fx-ac fx-col fx-jc">
-                <img src="img/s-1.jpg" alt="i">
+                <img class="item__prev" src="img/sl-1.jpg" alt="i">
+                <img class="item__img" src="img/s-1.jpg" alt="i">
                 <h3>Crumpy cat</h3>
                 <p>
                     somewhere deeply inside <br>
@@ -98,7 +98,8 @@
                 </p>
             </div>
             <div class="item fx-ac fx-col fx-jc">
-                <img src="img/s-2.jpg" alt="i">
+                <img class="item__prev" src="img/sl-2.jpg" alt="i">
+                <img class="item__img" src="img/s-2.jpg" alt="i">
                 <h3>
                     Hell cocktail <br>
                     of compium
@@ -110,7 +111,8 @@
                 </p>
             </div>
             <div class="item fx-ac fx-col fx-jc">
-                <img src="img/s-3.jpg" alt="i">
+                <img class="item__prev" src="img/sl-3.jpg" alt="i">
+                <img class="item__img" src="img/s-3.jpg" alt="i">
                 <h3>dogwifhat's hat</h3>
                 <p>
                     somewhere deeply inside <br>
@@ -119,7 +121,8 @@
                 </p>
             </div>
             <div class="item fx-ac fx-col fx-jc">
-                <img src="img/s-4.jpg" alt="i">
+                <img class="item__prev" src="img/sl-4.jpg" alt="i">
+                <img class="item__img" src="img/s-4.jpg" alt="i">
                 <h3>Trendy style</h3>
                 <p>
                     somewhere deeply inside <br>
@@ -131,15 +134,15 @@
 
     </section>
 
-    <section>
+    <section class="vid_1">
         <h2 class="h1"> How <mark>Rare</mark> <br> are you? </h2>
         <p class="text">
             On a Big Drop Day on New Year's Eve, the rarity of attributes of all memetic portraits will be revealed and
             every participant will get their piece of $TRUES proportional to the rarity of their portrait!
         </p>
 
-        <video controlsList="nofullscreen" playsinline preload muted loop poster="img/poster-4.jpg" class="vid"
-            src="vid/sc_05.mp4" loading="lazy"></video>
+        <video controlsList="nofullscreen" class="vw" playsinline preload muted poster="img/poster-4.jpg" id="vid_1"
+            src="vid/sc_05.mp4"></video>
     </section>
 
     <section>
@@ -149,8 +152,8 @@
             rewards tokens
         </p>
 
-        <video controlsList="nofullscreen" playsinline preload muted loop poster="img/poster-5.jpg" class="vid"
-            src="vid/sc_06.mp4" loading="lazy"></video>
+        <video controlsList="nofullscreen" playsinline preload muted poster="img/poster-5.jpg" class="vid"
+            src="vid/sc_06.mp4"></video>
     </section>
 
     <section>
@@ -162,67 +165,16 @@
             System of permanent media partners who get returns from every purchase made by users in the project
         </p>
 
-        <video controlsList="nofullscreen" playsinline preload id="vid1" muted loop poster="img/poster-6.jpg"
-            class="vid vw" src="vid/sc_07.mp4" loading="lazy"></video>
+        <video controlsList="nofullscreen" playsinline preload id="vid1" muted poster="img/poster-6.jpg" class="vid vw"
+            src="vid/sc_07.mp4"></video>
     </section>
 
     <!-- <script src="js/aos.js"></script> -->
-
-    <script src="js/jquery-2.2.4.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
     <script src="js/slick.min.js"></script>
-
-
-    <script>
-
-        $('.slider').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            arrows: true,
-            dots: false,
-            centerMode: true,
-            speed: 300,
-            touchThreshold: 10,
-            variableWidth: true,
-            infinite: true,
-            focusOnSelect: true,
-            touchMove: true,
-            prevArrow: '<button class="slick-prev"> </button>',
-            nextArrow: '<button class="slick-next"> </button>',
-        });
-
-
-        // AOS.init({ duration: 1200, offset: 100, });
-        $('.menu__btn').on('click', function () {
-            $('.menu__btn, .menu, body').toggleClass('active')
-        })
-
-        const videos = document.querySelectorAll('video');
-        const options = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver(handleIntersection, options);
-        videos.forEach(video => observer.observe(video));
-        function handleIntersection(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.play();
-                    var myVideo = entry.target;
-                    myVideo.addEventListener("contextmenu", function (e) { e.preventDefault(); e.stopPropagation(); }, false);
-                    if (myVideo.hasAttribute("controls")) {
-                        myVideo.removeAttribute("controls")
-                    }
-                }
-                else { entry.target.pause(); }
-            });
-        }
-
-        // function copyText() {
-        //     var button = document.querySelector('.btn');
-        //     var dataToCopy = button.getAttribute('data-copy');
-        //     navigator.clipboard.writeText(dataToCopy)
-        //         .then(function () { alert('Text copied: ' + dataToCopy); })
-        //         .catch(function (err) { console.error('Failed to copy text:', err); });
-        // }
-    </script>
-
+    <script src="js/script.js"></script>
 
 </body>
 

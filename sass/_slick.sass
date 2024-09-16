@@ -5,7 +5,7 @@
     padding: 0 0px
     width: 100vw
     max-width: 516px
-    margin: 20px auto 100px
+    margin: 0px auto 80px
     left: -16px
 
 .slick
@@ -13,41 +13,50 @@
     &-list
         display: flex
         align-items: stretch
+        padding: 20px 0
 
 .item
     display: flex !important
-    padding: 10px 10px 20px
-    border: 2px solid #000
+    padding: 10px 10px 15px
     border-radius: 20px
     width: 200px
     background-color: #D2EDF8
     overflow: hidden
     margin: 0 5px
-    img
+    position: relative
+    z-index: 1
+    border: 3px solid #D2EDF8
+    &__img
         transition: all ease .3s
         padding: 0 10px 10px
-        transform: translateY(30px)
-        opacity: 1 !important
+        opacity: 0
+        animation: fadeDown .3s ease forwards
 
     h3
         text-transform: uppercase
         font-size: 16px
         margin: 3px 0 4px
         opacity: 0
+        animation: fadeDown .3s ease forwards
     p
         font-size: 12px
         font-weight: 500
         opacity: 0
         margin: 0
-
-    * 
         animation: fadeDown .3s ease forwards
+
+    &__prev
+        width: 90%
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
 
 .slick-arrow
     position: absolute
     top: 50%
-    width: 30px
-    height: 30px
+    width: 20px
+    height: 20px
     line-height: 50px
     border: none
     background-color: transparent
@@ -67,42 +76,51 @@
         filter: invert(1)
 
 .slick-prev
-    left: 10px
+    left: 6px
     text-align: left
 
 .slick-next
-    right: 10px
+    right: 6px
     text-align: right
     transform: scaleX(-1) translateY(-50%) !important
 
-// .item.slick-slide
-//     transition: transform .3s
-//     position: relative
+.item.slick-slide
+    transition: transform .3s
+    position: relative
 
-// .item.slick-slide.slick-center + .slick-slide
-//     transform: scale(0.8) translate(-130px)
-//     z-index: 10
+.item.slick-slide.slick-center + .slick-slide
+    transform: scale(0.6) translate(-170px)
+    z-index: 10
 
-// .item.slick-slide.slick-active
+.item.slick-slide.slick-active
 
-// .item.slick-slide.slick-current.slick-active.slick-center
+.item.slick-slide.slick-current.slick-active.slick-center
 
-// .slider .slick-slide,
-// .slider .slick-slide[aria-hidden="true"]:not(.slick-cloned) ~ .slick-cloned[aria-hidden="true"]
-//     transform: scale(0.8) translate(130px)
+.slider .slick-slide,
+.slider .slick-slide[aria-hidden="true"]:not(.slick-cloned) ~ .slick-cloned[aria-hidden="true"]
+    transform: scale(0.6) translate(170px)
 
 .slider .slick-center,
 .slider .slick-slide[aria-hidden="true"]:not([tabindex="-1"]) + .slick-cloned[aria-hidden="true"]
-    // transform: scale(1)
+    transform: scale(1)
     z-index: 30
-    *
-        animation: fadeIn .4s ease forwards
-        display: block
+    border-color: #000
+    box-shadow: 0 0 24px 6px rgba(255, 255, 255, 1)
+
+    .item
+        &__prev
+            opacity: 0
+
+        &__img
+            animation: fadeIn .4s ease forwards
+
     h3
+        animation: fadeIn .4s ease forwards
         opacity: 0
         animation-delay: .1s
 
     p
+        animation: fadeIn .4s ease forwards
         opacity: 0
         animation-delay: .2s
 
