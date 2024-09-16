@@ -1,8 +1,7 @@
-const video = document.querySelector("#vid_1");
-let src = video.currentSrc || video.src;
-console.log(video, src);
+// Выбираем все видео на странице с помощью jQuery
+const videos = $(".vid");
 
-/* Make sure the video is 'activated' on iOS */
+// Функция для активации видео на iOS
 function once(el, event, fn, opts) {
     var onceFn = function (e) {
         el.removeEventListener(event, onceFn);
@@ -12,74 +11,46 @@ function once(el, event, fn, opts) {
     return onceFn;
 }
 
+// Активация видео на iOS (одноразово)
 once(document.documentElement, "touchstart", function (e) {
-    video.play();
-    video.pause();
+    videos.each(function () {
+        this.play();
+        this.pause();
+    });
 });
 
+// Регистрация плагина GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-let tl = gsap.timeline({
-    defaults: { duration: 1 },
-    scrollTrigger: {
-        trigger: "#vid_1",
-        start: "20% 50%",
-        end: "80% 50%",
-        markers: true,
-        scrub: true
+// Применяем GSAP таймлайны и ScrollTrigger для каждого видео
+videos.each(function (index, video) {
+    if (video.tagName.toLowerCase() === 'video') { // Проверяем, что это видео элемент
+        let src = video.currentSrc || video.src;
+        console.log(`Video ${index + 1}:`, video, src);
 
-    },
-    // filter: "blur(5px)",
-});
+        let tl = gsap.timeline({
+            defaults: { duration: 1 },
+            scrollTrigger: {
+                trigger: video, // используем текущее видео как триггер
+                start: "0% 60%",
+                end: "100% 50%",
+                // markers: true,
+                scrub: true
+            },
+        });
 
-once(video, "loadedmetadata", () => {
-    tl.fromTo(
-        video,
-        { currentTime: 0 },
-        { currentTime: video.duration || 1 }
-    );
-});
-
-setTimeout(function () {
-    if (window["fetch"]) {
-        fetch(src)
-            .then((response) => response.blob())
-            .then((response) => {
-                var blobURL = URL.createObjectURL(response);
-
-                var t = video.currentTime;
-                once(document.documentElement, "touchstart", function (e) {
-                    video.play();
-                    video.pause();
-                });
-
-                video.setAttribute("src", blobURL);
-                video.currentTime = t + 0.001;
-            });
+        // Начинаем анимацию, когда метаданные загружены
+        once(video, "loadedmetadata", () => {
+            tl.fromTo(
+                video,
+                { currentTime: 0 },
+                { currentTime: video.duration || 1 }
+            );
+        });
+    } else {
+        console.error(`Element at index ${index} is not a video.`, video);
     }
-}, 1000);
-
-/* When first coded, the Blobbing was important to ensure the browser wasn't dropping previously played segments, but it doesn't seem to be a problem now. Possibly based on memory availability? */
-setTimeout(function () {
-    if (window["fetch"]) {
-        fetch(src)
-            .then((response) => response.blob())
-            .then((response) => {
-                var blobURL = URL.createObjectURL(response);
-
-                var t = video.currentTime;
-                once(document.documentElement, "touchstart", function (e) {
-                    video.play();
-                    video.pause();
-                });
-
-                video.setAttribute("src", blobURL);
-                video.currentTime = t + 0.01;
-            });
-    }
-}, 1000);
-
-
+});
 
 $('.slider').slick({
     slidesToShow: 3,
@@ -103,23 +74,23 @@ $('.menu__btn').on('click', function () {
     $('.menu__btn, .menu, body').toggleClass('active')
 })
 
-// const videos = document.querySelectorAll('video');
-// const options = { root: null, rootMargin: '0px', threshold: 0.1 };
-// const observer = new IntersectionObserver(handleIntersection, options);
-// videos.forEach(video => observer.observe(video));
-// function handleIntersection(entries) {
-//     entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//             entry.target.play();
-//             var myVideo = entry.target;
-//             myVideo.addEventListener("contextmenu", function (e) { e.preventDefault(); e.stopPropagation(); }, false);
-//             if (myVideo.hasAttribute("controls")) {
-//                 myVideo.removeAttribute("controls")
-//             }
-//         }
-//         else { entry.target.pause(); }
-//     });
-// }
+const loop = document.querySelectorAll('.loop');
+const options = { root: null, rootMargin: '0px', threshold: 0.1 };
+const observer = new IntersectionObserver(handleIntersection, options);
+loop.forEach(video => observer.observe(video));
+function handleIntersection(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.play();
+            var myVideo = entry.target;
+            myVideo.addEventListener("contextmenu", function (e) { e.preventDefault(); e.stopPropagation(); }, false);
+            if (myVideo.hasAttribute("controls")) {
+                myVideo.removeAttribute("controls")
+            }
+        }
+        else { entry.target.pause(); }
+    });
+}
 
 
 // function copyText() {
