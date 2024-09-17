@@ -35,30 +35,30 @@ function createVideoTimeline($video, startTrigger, endTrigger) {
 gsap.timeline({
     scrollTrigger: {
         trigger: ".true__left",
-        start: "-90% 30%",
-        end: "160% 30%",
+        start: "-120% 50%",
+        end: "300% 60%",
         scrub: true,
         // markers: true,
 
     }
 })
-    .fromTo("#i_left", { opacity: 0, x: '0%', rotation: 0 }, { opacity: 1, x: '170%', rotation: -20, duration: 1 })
-    .to("#i_left", { opacity: 1, x: '170%', rotation: -20, duration: 2 })
-    .to("#i_left", { opacity: 0, x: '0%', rotation: 0, duration: 1 });
+    .fromTo("#i_left", { x: '0%', rotation: 0 }, { x: '170%', rotation: -20, duration: 1 })
+    .to("#i_left", { x: '170%', rotation: -20, duration: 2 })
+    .to("#i_left", { x: '0%', rotation: 0, duration: 1 });
 
 gsap.timeline({
     scrollTrigger: {
         trigger: ".true__right",
-        start: "-90% 30%",
-        end: "160% 30%",
+        start: "-120% 50%",
+        end: "300% 60%",
         scrub: true,
         // markers: true,
 
     }
 })
-    .fromTo("#i_right", { opacity: 0, x: '0%', rotation: 0 }, { opacity: 1, x: '-170%', rotation: 20, duration: 1 })
-    .to("#i_right", { opacity: 1, x: '-170%', rotation: 20, duration: 2 })
-    .to("#i_right", { opacity: 0, x: '0%', rotation: 0, duration: 1 });
+    .fromTo("#i_right", { x: '0%', rotation: 0 }, { x: '-170%', rotation: 20, duration: 1 })
+    .to("#i_right", { x: '-170%', rotation: 20, duration: 2 })
+    .to("#i_right", { x: '0%', rotation: 0, duration: 1 });
 
 $('.slider').slick({
     slidesToShow: 3,
@@ -66,15 +66,29 @@ $('.slider').slick({
     arrows: true,
     dots: false,
     centerMode: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
     speed: 300,
     touchThreshold: 10,
     variableWidth: true,
     infinite: true,
     focusOnSelect: true,
     touchMove: true,
+    asNavFor: '.slider-nav',
     prevArrow: '<button class="slick-prev"> </button>',
     nextArrow: '<button class="slick-next"> </button>',
 });
+
+$('.slider-nav').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    asNavFor: '.slider',
+    dots: false,
+    centerPadding: 0,
+    arrows: false,
+    centerMode: true,
+    focusOnSelect: true
+})
 
 
 // AOS.init({ duration: 1200, offset: 100, });
