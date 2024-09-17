@@ -4,6 +4,36 @@
 @import 'header'
 @import 'slick'
 
-.main 
+.main
     text-align: center
 
+.true
+    position: relative
+    z-index: 1
+    padding: 0 16px
+    overflow: hidden
+    &-img
+        position: absolute
+        bottom: 121vw
+        width: 30vw
+        height: 44vw
+        left: -34%
+        z-index: 111
+        img
+            display: block
+            width: 100%
+            height: 100%
+            object-fit: contain
+            object-position: top center
+            transform: rotateZ(20deg)
+
+        &.--right
+            bottom: 120vw
+            width: 29vw
+            height: 43vw
+            left: auto
+            right: -37%
+            img
+                transform: rotateZ(-20deg)
+
+    &__left

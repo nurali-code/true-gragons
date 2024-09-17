@@ -1,45 +1,64 @@
-// Регистрация плагина GSAP
 gsap.registerPlugin(ScrollTrigger);
-
-// Функция для создания таймлайна для одного видео
 function createVideoTimeline($video, startTrigger, endTrigger) {
-    // jQuery объект преобразуем в DOM-элемент
     let video = $video.get(0);
 
-    // Активация видео на iOS (одноразово)
-    $(document).one("touchstart", function () { video.play(); video.pause(); });
+    // $(document).one("touchstart", function () {
+    //     console.log('f');
+    //     video.play(); video.pause();
+    // });
 
-    // Создаем GSAP таймлайн для видео
     let tl = gsap.timeline({
         defaults: { duration: 1 },
         scrollTrigger: {
-            trigger: video,      // используем текущее видео как триггер
-            start: startTrigger, // параметры начала
-            end: endTrigger,     // параметры окончания
-            // markers: true,       // маркеры для отладки
-            scrub: true          // плавный скролл
+            trigger: video,
+            start: startTrigger,
+            end: endTrigger,
+            markers: true,
+            scrub: true
         },
     });
 
-    // Начинаем анимацию, когда метаданные видео загружены
     $video.one("loadedmetadata", function () {
         tl.fromTo(
             video,
-            { currentTime: 0 },              // Начальная точка анимации
-            { currentTime: video.duration || 1 } // Финальная точка анимации
+            { currentTime: 0 },
+            { currentTime: video.duration || 1 }
         );
     });
 
-    return tl; // Возвращаем таймлайн для дальнейшего использования, если нужно
+    return tl;
 }
 
-// Пример использования функции с несколькими видео
+// createVideoTimeline($("#video1"), "0% 10%", "100% 100%");
+// createVideoTimeline($("#video2"), "20% 60%", "90% 80%");
 
-// Видео 1
-createVideoTimeline($("#video1"), "0% 10%", "100% 100%");
+gsap.timeline({
+    scrollTrigger: {
+        trigger: ".true__left",
+        start: "-90% 30%",
+        end: "160% 30%",
+        scrub: true,
+        markers: true,
 
-// Видео 2
-createVideoTimeline($("#video2"), "20% 60%", "90% 80%");
+    }
+})
+    .fromTo("#i_left", { opacity: 0, x: '0%', rotation: 0 }, { opacity: 1, x: '170%', rotation: -20, duration: 1 })
+    .to("#i_left", { opacity: 1, x: '170%', rotation: -20, duration: 2 })
+    .to("#i_left", { opacity: 0, x: '0%', rotation: 0, duration: 1 });
+
+gsap.timeline({
+    scrollTrigger: {
+        trigger: ".true__right",
+        start: "-90% 30%",
+        end: "160% 30%",
+        scrub: true,
+        markers: true,
+
+    }
+})
+    .fromTo("#i_right", { opacity: 0, x: '0%', rotation: 0 }, { opacity: 1, x: '-170%', rotation: 20, duration: 1 })
+    .to("#i_right", { opacity: 1, x: '-170%', rotation: 20, duration: 2 })
+    .to("#i_right", { opacity: 0, x: '0%', rotation: 0, duration: 1 });
 
 $('.slider').slick({
     slidesToShow: 3,

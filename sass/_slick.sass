@@ -17,7 +17,8 @@
 
 .item
     display: flex !important
-    padding: 10px 10px 15px
+    padding: 0
+    overflow: hidden
     border-radius: 20px
     width: 200px
     background-color: #D2EDF8
@@ -28,22 +29,10 @@
     border: 3px solid #D2EDF8
     &__img
         transition: all ease .3s
-        padding: 0 10px 10px
+        padding: 0 
         opacity: 0
         animation: fadeDown .3s ease forwards
 
-    h3
-        text-transform: uppercase
-        font-size: 16px
-        margin: 3px 0 4px
-        opacity: 0
-        animation: fadeDown .3s ease forwards
-    p
-        font-size: 12px
-        font-weight: 500
-        opacity: 0
-        margin: 0
-        animation: fadeDown .3s ease forwards
 
     &__prev
         width: 90%
