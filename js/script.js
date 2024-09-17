@@ -38,7 +38,7 @@ gsap.timeline({
         start: "-90% 30%",
         end: "160% 30%",
         scrub: true,
-        markers: true,
+        // markers: true,
 
     }
 })
@@ -52,7 +52,7 @@ gsap.timeline({
         start: "-90% 30%",
         end: "160% 30%",
         scrub: true,
-        markers: true,
+        // markers: true,
 
     }
 })
