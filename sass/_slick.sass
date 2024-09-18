@@ -17,7 +17,7 @@
 
 .item
     display: flex !important
-    padding: 0
+    padding: 0 0 5px
     overflow: hidden
     border-radius: 20px
     width: 200px
@@ -29,10 +29,13 @@
     border: 3px solid #D2EDF8
     &__img
         transition: all ease .3s
-        padding: 0 
+        padding: 0
         opacity: 0
         animation: fadeDown .3s ease forwards
-
+        &:nth-child(3)
+            animation-delay: .2s
+        &:nth-child(4)
+            animation-delay: .3s
 
     &__prev
         width: 90%
@@ -102,6 +105,12 @@
 
         &__img
             animation: fadeIn .4s ease forwards
+            &:nth-child(2)
+                animation-delay: .1s
+            &:nth-child(3)
+                animation-delay: .2s
+            &:nth-child(4)
+                animation-delay: .3s
 
     h3
         animation: fadeIn .4s ease forwards

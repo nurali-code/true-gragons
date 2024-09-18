@@ -34,6 +34,21 @@ function createVideoTimeline($video, startTrigger, endTrigger) {
 
 gsap.timeline({
     scrollTrigger: {
+        trigger: ".pasp-img",
+        start: "-20% 70%",
+        end: "100% 20%",
+        scrub: true,
+        // markers: true,
+
+    }
+})
+    .fromTo(".pasp_img", { y: '100%', rotation: -30 }, { y: '0%', rotation: 0, duration: 1 })
+    .to(".pasp_img", { y: '0%', rotation: 0, duration: 2 })
+    .to(".pasp_img", { y: '-50%', rotation: 10, duration: 1 });
+
+
+gsap.timeline({
+    scrollTrigger: {
         trigger: ".true__left",
         start: "-120% 50%",
         end: "300% 60%",
@@ -42,9 +57,9 @@ gsap.timeline({
 
     }
 })
-    .fromTo("#i_left", { x: '0%', rotation: 0 }, { x: '170%', rotation: -20, duration: 1 })
-    .to("#i_left", { x: '170%', rotation: -20, duration: 2 })
-    .to("#i_left", { x: '0%', rotation: 0, duration: 1 });
+    .fromTo("#i_left", { x: '0%', rotation: 0 }, { x: '170%', rotation: -30, duration: 1 })
+    .to("#i_left", { x: '170%', rotation: -30, duration: 2 })
+    .to("#i_left", { x: '0%', rotation: -50, duration: 1 });
 
 gsap.timeline({
     scrollTrigger: {
@@ -56,9 +71,9 @@ gsap.timeline({
 
     }
 })
-    .fromTo("#i_right", { x: '0%', rotation: 0 }, { x: '-170%', rotation: 20, duration: 1 })
-    .to("#i_right", { x: '-170%', rotation: 20, duration: 2 })
-    .to("#i_right", { x: '0%', rotation: 0, duration: 1 });
+    .fromTo("#i_right", { x: '0%', rotation: 0 }, { x: '-170%', rotation: 30, duration: 1 })
+    .to("#i_right", { x: '-170%', rotation: 30, duration: 2 })
+    .to("#i_right", { x: '0%', rotation: 50, duration: 1 });
 
 $('.slider').slick({
     slidesToShow: 3,
@@ -83,6 +98,7 @@ $('.slider-nav').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     asNavFor: '.slider',
+    speed: 300,
     dots: false,
     centerPadding: 0,
     arrows: false,

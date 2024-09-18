@@ -20,13 +20,15 @@
         left: -34%
         z-index: 111
         transition: .4s ease-out all
+        transform-origin: 50% 0
         img
             display: block
             width: 100%
             height: 100%
             object-fit: contain
             object-position: top center
-            transform: rotateZ(20deg)
+            transform: rotateZ(30deg)
+            transform-origin: 50% 0
 
         &.--right
             bottom: 120vw
@@ -35,6 +37,36 @@
             left: auto
             right: -37%
             img
-                transform: rotateZ(-20deg)
+                transform: rotateZ(-30deg)
 
     &__left
+
+.pasp
+    overflow: hidden
+    p
+        padding: 0 16px
+    &-img
+        position: relative
+        z-index: 1
+        max-width: 90%
+        margin: 20px auto 100px
+
+    &_img
+        transition: .1s ease all
+        &:nth-child(1)
+            transition-duration: .4s
+        &:nth-child(2)
+            transition-duration: .8s
+        &:nth-child(3)
+            transition-duration: 1s
+        &:nth-child(4)
+            transition-duration: 1.4s
+        &:nth-child(5)
+            transition-duration: 1.8s
+        &:nth-child(6)
+            transition-duration: .2s
+
+        &:not(.--main)
+            position: absolute
+            top: 0
+            left: 5%
