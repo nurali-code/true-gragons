@@ -34,18 +34,6 @@ function createVideoTimeline($video, startTrigger, endTrigger) {
 
 gsap.timeline({
     scrollTrigger: {
-        trigger: ".targ",
-        start: "0% 70%",
-        end: "50% 70%",
-        scrub: true,
-        // markers: true,
-    }
-})
-    .from(".fadeup", { y: '200%' })
-    .to(".fadeup", { y: '0%'});
-
-gsap.timeline({
-    scrollTrigger: {
         trigger: ".pasp-img",
         start: "-20% 70%",
         end: "100% 20%",
