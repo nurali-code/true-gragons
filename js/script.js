@@ -34,12 +34,23 @@ function createVideoTimeline($video, startTrigger, endTrigger) {
 
 gsap.timeline({
     scrollTrigger: {
+        trigger: ".targ",
+        start: "0% 70%",
+        end: "50% 70%",
+        scrub: true,
+        // markers: true,
+    }
+})
+    .from(".fadeup", { y: '200%' })
+    .to(".fadeup", { y: '0%'});
+
+gsap.timeline({
+    scrollTrigger: {
         trigger: ".pasp-img",
         start: "-20% 70%",
         end: "100% 20%",
         scrub: true,
         // markers: true,
-
     }
 })
     .fromTo(".pasp_img", { y: '100%', rotation: -30 }, { y: '0%', rotation: 0, duration: 1 })
@@ -54,11 +65,10 @@ gsap.timeline({
         end: "300% 60%",
         scrub: true,
         // markers: true,
-
     }
 })
     .fromTo("#i_left", { x: '0%', rotation: 0 }, { x: '170%', rotation: -30, duration: 1 })
-    .to("#i_left", { x: '170%', rotation: -30, duration: 2 })
+    .to("#i_left", { x: '170%', rotation: -30, duration: 1 })
     .to("#i_left", { x: '0%', rotation: -50, duration: 1 });
 
 gsap.timeline({
@@ -68,7 +78,6 @@ gsap.timeline({
         end: "300% 60%",
         scrub: true,
         // markers: true,
-
     }
 })
     .fromTo("#i_right", { x: '0%', rotation: 0 }, { x: '-170%', rotation: 30, duration: 1 })
@@ -90,8 +99,8 @@ $('.slider').slick({
     focusOnSelect: true,
     touchMove: true,
     asNavFor: '.slider-nav',
-    prevArrow: '<button class="slick-prev"> </button>',
-    nextArrow: '<button class="slick-next"> </button>',
+    prevArrow: '<button class="slick-prev"></button>',
+    nextArrow: '<button class="slick-next"></button>',
 });
 
 $('.slider-nav').slick({
@@ -104,12 +113,6 @@ $('.slider-nav').slick({
     arrows: false,
     centerMode: true,
     focusOnSelect: true
-})
-
-
-// AOS.init({ duration: 1200, offset: 100, });
-$('.menu__btn').on('click', function () {
-    $('.menu__btn, .menu, body').toggleClass('active')
 })
 
 const loop = document.querySelectorAll('.loop');
@@ -130,7 +133,6 @@ function handleIntersection(entries) {
     });
 }
 
-
 // function copyText() {
 //     var button = document.querySelector('.btn');
 //     var dataToCopy = button.getAttribute('data-copy');
@@ -138,3 +140,8 @@ function handleIntersection(entries) {
 //         .then(function () { alert('Text copied: ' + dataToCopy); })
 //         .catch(function (err) { console.error('Failed to copy text:', err); });
 // }
+
+// AOS.init({ duration: 1200, offset: 100, });
+$('.menu__btn').on('click', function () {
+    $('.menu__btn, .menu, body').toggleClass('active')
+})
