@@ -34,6 +34,19 @@ function createVideoTimeline($video, startTrigger, endTrigger) {
 
 gsap.timeline({
     scrollTrigger: {
+        trigger: ".panic-img",
+        start: "-0% 80%",
+        end: "100% 20%",
+        scrub: true,
+        // markers: true,
+    }
+})
+    .fromTo(".panic_img", { y: '100%', }, { y: '0%', duration: 1 })
+    .to(".panic_img", { y: '0%', duration: 2 })
+    .to(".panic_img", { y: '-50%', duration: 1 });
+
+gsap.timeline({
+    scrollTrigger: {
         trigger: ".pasp-img",
         start: "-20% 70%",
         end: "100% 20%",
@@ -56,7 +69,7 @@ gsap.timeline({
     }
 })
     .fromTo("#i_left", { x: '0%', rotation: 0 }, { x: '170%', rotation: -30, duration: 1 })
-    .to("#i_left", { x: '170%', rotation: -30, duration: 1 })
+    .to("#i_left", { x: '170%', rotation: -30, duration: 2 })
     .to("#i_left", { x: '0%', rotation: -50, duration: 1 });
 
 gsap.timeline({
@@ -79,8 +92,8 @@ $('.slider').slick({
     dots: false,
     centerMode: true,
     autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 300,
+    autoplaySpeed: 2500,
+    speed: 400,
     touchThreshold: 10,
     variableWidth: true,
     infinite: true,
@@ -95,7 +108,7 @@ $('.slider-nav').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     asNavFor: '.slider',
-    speed: 300,
+    speed: 400,
     dots: false,
     centerPadding: 0,
     arrows: false,
@@ -104,7 +117,7 @@ $('.slider-nav').slick({
 })
 
 const loop = document.querySelectorAll('.loop');
-const options = { root: null, rootMargin: '0px', threshold: 0.1 };
+const options = { root: null, rootMargin: '0px', threshold: 0.4 };
 const observer = new IntersectionObserver(handleIntersection, options);
 loop.forEach(video => observer.observe(video));
 function handleIntersection(entries) {

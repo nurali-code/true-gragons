@@ -70,3 +70,27 @@
             position: absolute
             top: 0
             left: 5%
+
+.panic
+    
+    &-img
+        position: relative
+        z-index: 1
+        max-width: 90%
+        margin: 20px auto 100px
+
+    &_img
+        transition: .1s ease all
+
+        &:not(.--main)
+            position: absolute
+            top: 0
+            left: 5%
+
+        &:nth-child(2)
+            transition-duration: .4s
+        &:nth-child(3)
+            transition-duration: .8s
+
+.mg
+    margin: 24px auto 99px
