@@ -1,37 +1,4 @@
 gsap.registerPlugin(ScrollTrigger);
-function createVideoTimeline($video, startTrigger, endTrigger) {
-    let video = $video.get(0);
-
-    // $(document).one("touchstart", function () {
-    //     console.log('f');
-    //     video.play(); video.pause();
-    // });
-
-    let tl = gsap.timeline({
-        defaults: { duration: 1 },
-        scrollTrigger: {
-            trigger: video,
-            start: startTrigger,
-            end: endTrigger,
-            markers: true,
-            scrub: true
-        },
-    });
-
-    $video.one("loadedmetadata", function () {
-        tl.fromTo(
-            video,
-            { currentTime: 0 },
-            { currentTime: video.duration || 1 }
-        );
-    });
-
-    return tl;
-}
-
-// createVideoTimeline($("#video1"), "0% 10%", "100% 100%");
-// createVideoTimeline($("#video2"), "20% 60%", "90% 80%");
-
 gsap.timeline({
     scrollTrigger: {
         trigger: ".panic-img",
