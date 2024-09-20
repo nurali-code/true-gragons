@@ -3,7 +3,7 @@ gsap.timeline({
     scrollTrigger: {
         trigger: ".panic-img",
         start: "-0% 80%",
-        end: "100% 20%",
+        end: "100% 10%",
         scrub: true,
         // markers: true,
     }
@@ -58,7 +58,7 @@ $('.slider').slick({
     arrows: true,
     dots: false,
     centerMode: true,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 2500,
     speed: 400,
     touchThreshold: 10,
