@@ -84,7 +84,7 @@ $('.slider-nav').slick({
 })
 
 const loop = document.querySelectorAll('.loop');
-const options = { root: null, rootMargin: '0px', threshold: 0.4 };
+const options = { root: null, rootMargin: '0px', threshold: 0.1 };
 const observer = new IntersectionObserver(handleIntersection, options);
 loop.forEach(video => observer.observe(video));
 function handleIntersection(entries) {
