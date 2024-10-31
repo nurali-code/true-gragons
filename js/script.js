@@ -87,17 +87,32 @@ const loop = document.querySelectorAll('.loop');
 const options = { root: null, rootMargin: '0px', threshold: 0.1 };
 const observer = new IntersectionObserver(handleIntersection, options);
 loop.forEach(video => observer.observe(video));
+
 function handleIntersection(entries) {
     entries.forEach(entry => {
+        const myVideo = entry.target;
+
         if (entry.isIntersecting) {
-            entry.target.play();
-            var myVideo = entry.target;
-            myVideo.addEventListener("contextmenu", function (e) { e.preventDefault(); e.stopPropagation(); }, false);
+            myVideo.play();
+
+            // Отключаем меню по правой кнопке мыши
+            myVideo.addEventListener("contextmenu", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+
+            // Удаляем атрибут controls, если он присутствует
             if (myVideo.hasAttribute("controls")) {
-                myVideo.removeAttribute("controls")
+                myVideo.removeAttribute("controls");
+            }
+        } else {
+            myVideo.pause();
+
+            // Если видео имеет класс "start", сбрасываем его к началу
+            if (myVideo.classList.contains("start")) {
+                myVideo.currentTime = 0;
             }
         }
-        else { entry.target.pause(); }
     });
 }
 
